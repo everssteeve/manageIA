@@ -61,7 +61,7 @@ export function CoachClient({ lang, dict, initialSessionId }: Props) {
       const response = await fetch("/api/coach", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ sessionId, message }),
+        body: JSON.stringify({ sessionId, message, lang }),
       });
 
       if (!response.ok) {

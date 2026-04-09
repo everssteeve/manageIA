@@ -8,7 +8,7 @@ const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
 const DAILY_MESSAGE_LIMIT = 20;
 
-const SYSTEM_PROMPT = `You are an expert AI coach helping managers successfully navigate their transition to AI-augmented work. You specialize in:
+const SYSTEM_PROMPT_BASE = `You are an expert AI coach helping managers successfully navigate their transition to AI-augmented work. You specialize in:
 
 1. Helping managers understand what AI tools can and cannot do in their specific context
 2. Identifying which parts of their role are most and least affected by AI
@@ -25,6 +25,16 @@ Your coaching style:
 - Focused on the human side — technology is secondary to people, culture, and leadership
 
 When you lack context about the user's specific situation, ask clarifying questions before offering advice. Always prioritize their specific context over generic advice.`;
+
+const LANGUAGE_INSTRUCTIONS: Record<string, string> = {
+  fr: "\n\nIMPORTANT: Respond exclusively in French (français). All your messages must be in French.",
+  es: "\n\nIMPORTANT: Respond exclusively in Spanish (español). All your messages must be in Spanish.",
+};
+
+function getSystemPrompt(lang?: string): string {
+  const instruction = lang ? (LANGUAGE_INSTRUCTIONS[lang] ?? "") : "";
+  return SYSTEM_PROMPT_BASE + instruction;
+}
 
 export async function POST(req: NextRequest) {
   const session = await getServerSession(authOptions);
@@ -53,7 +63,7 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  const { sessionId, message } = await req.json();
+  const { sessionId, message, lang } = await req.json();
 
   if (!message?.trim()) {
     return NextResponse.json({ error: "Message is required" }, { status: 400 });
@@ -100,7 +110,7 @@ export async function POST(req: NextRequest) {
   const stream = await anthropic.messages.stream({
     model: "claude-sonnet-4-6",
     max_tokens: 1024,
-    system: SYSTEM_PROMPT + userContext,
+    system: getSystemPrompt(lang) + userContext,
     messages: [...history, { role: "user", content: message }],
   });
 

@@ -18,13 +18,19 @@ export function proxy(request: NextRequest) {
 
   // Check if the path already starts with a supported locale
   const firstSegment = pathname.split("/")[1];
-  if (hasLocale(firstSegment)) return NextResponse.next();
+  const locale = hasLocale(firstSegment) ? firstSegment : getPreferredLocale(request);
 
-  // Redirect to locale-prefixed path
-  const locale = getPreferredLocale(request);
-  const url = request.nextUrl.clone();
-  url.pathname = `/${locale}${pathname}`;
-  return NextResponse.redirect(url);
+  if (!hasLocale(firstSegment)) {
+    // Redirect to locale-prefixed path
+    const url = request.nextUrl.clone();
+    url.pathname = `/${locale}${pathname}`;
+    return NextResponse.redirect(url);
+  }
+
+  // Pass locale to server components via request header
+  const requestHeaders = new Headers(request.headers);
+  requestHeaders.set("x-locale", locale);
+  return NextResponse.next({ request: { headers: requestHeaders } });
 }
 
 export const config = {
