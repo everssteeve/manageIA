@@ -1,0 +1,21 @@
+{
+  "name": "ai-manager-transition-coach",
+  "version": "0.1.0",
+  "description": "AI-powered coaching conversation to help managers navigate their transition to AI",
+  "main": "coach.js",
+  "bin": {
+    "coach": "./coach.js"
+  },
+  "scripts": {
+    "start": "node coach.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.86.1",
+    "readline": "^1.3.0"
+  }
+}
