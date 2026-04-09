@@ -1,0 +1,142 @@
+{
+  "home": {
+    "title": "Coach IA pour Managers",
+    "subtitle": "Un parcours d'apprentissage structuré et un système de coaching IA pour vous aider à naviguer la transition de votre équipe vers le travail augmenté par l'IA.",
+    "learningPath": {
+      "title": "Parcours d'apprentissage",
+      "description": "Des micro-compétences structurées pour la transition IA, débloquées au fur et à mesure de votre progression."
+    },
+    "aiCoach": {
+      "title": "Coach IA",
+      "description": "Des conversations de coaching contextuelles adaptées à votre situation."
+    },
+    "progressTracking": {
+      "title": "Suivi de progression",
+      "description": "Visualisez votre évolution sur les compétences et obtenez des recommandations pour la suite."
+    },
+    "getStarted": "Commencer",
+    "dashboard": "Tableau de bord →"
+  },
+  "nav": {
+    "appName": "Coach IA pour Managers",
+    "skills": "Compétences",
+    "aiCoach": "Coach IA"
+  },
+  "dashboard": {
+    "welcomeBack": "Bon retour",
+    "subtitle": "Continuez votre parcours de transition vers l'IA.",
+    "overallProgress": "Progression globale",
+    "skillsCompleted": "Compétences complétées",
+    "inProgress": "En cours",
+    "recommendedNext": "Recommandé ensuite",
+    "allSkills": "Toutes les compétences",
+    "viewSkillTree": "Voir l'arbre de compétences →",
+    "modules": "{completed}/{total} modules",
+    "completeFirst": "Complétez {prerequisites} d'abord",
+    "recentCoaching": "Coaching récent",
+    "openCoach": "Ouvrir le coach →",
+    "coachingSession": "Session de coaching"
+  },
+  "status": {
+    "done": "Terminé",
+    "inProgress": "En cours",
+    "available": "Disponible",
+    "locked": "Verrouillé",
+    "completed": "Complété",
+    "continue": "Continuer",
+    "start": "Commencer"
+  },
+  "coach": {
+    "title": "Coach IA",
+    "newConversation": "Nouvelle conversation",
+    "initialMessage": "Bonjour ! Je suis votre coach IA. Je suis ici pour vous aider à naviguer la transition de votre équipe vers le travail augmenté par l'IA.\n\nQu'avez-vous en tête ? Vous pouvez partager un défi spécifique auquel vous faites face, poser des questions sur une compétence que vous apprenez, ou simplement commencer une conversation sur votre situation.",
+    "placeholder": "Posez n'importe quelle question à votre coach... (Entrée pour envoyer, Maj+Entrée pour une nouvelle ligne)",
+    "send": "Envoyer",
+    "limit": "Limité à 20 messages par jour. Les réponses peuvent prendre un moment.",
+    "newSessionMessage": "Démarrage d'une nouvelle conversation. De quoi souhaitez-vous parler ?",
+    "error": "Quelque chose s'est mal passé. Veuillez réessayer.",
+    "backToDashboard": "← Tableau de bord"
+  },
+  "onboarding": {
+    "stepOf": "Étape {step} sur 3",
+    "step1": {
+      "title": "Quel est votre rôle ?",
+      "description": "Cela nous aide à adapter le parcours d'apprentissage à votre situation.",
+      "roles": {
+        "teamLead": { "label": "Chef d'équipe", "description": "Diriger une petite équipe (2–8 personnes)" },
+        "middleManager": { "label": "Manager intermédiaire", "description": "Gérer des chefs d'équipe ou plusieurs équipes" },
+        "seniorManager": { "label": "Manager senior / Directeur", "description": "Diriger une organisation de managers" },
+        "individualContributor": { "label": "Contributeur individuel", "description": "Pas de subordonnés directs, mais curieux du leadership IA" }
+      }
+    },
+    "step2": {
+      "title": "Quelle est la taille de votre équipe ?",
+      "description": "Incluant les subordonnés directs et indirects.",
+      "sizes": {
+        "s1to5": "1–5 personnes",
+        "s6to20": "6–20 personnes",
+        "s21to100": "21–100 personnes",
+        "s100plus": "100+ personnes"
+      }
+    },
+    "step3": {
+      "title": "Quelle est votre familiarité avec les outils IA ?",
+      "description": "Soyez honnête — nous calibrerons le contenu en conséquence.",
+      "levels": {
+        "none": { "label": "Aucune", "description": "Je n'ai pas encore utilisé d'outils IA dans mon travail" },
+        "basic": { "label": "Basique", "description": "J'ai essayé quelques choses mais je ne les utilise pas régulièrement" },
+        "intermediate": { "label": "Intermédiaire", "description": "J'utilise régulièrement des outils IA dans mon propre travail" },
+        "advanced": { "label": "Avancé", "description": "Je guide activement l'adoption de l'IA par mon équipe" }
+      }
+    },
+    "back": "Retour",
+    "continue": "Continuer",
+    "startLearning": "Commencer l'apprentissage",
+    "settingUp": "Configuration..."
+  },
+  "skills": {
+    "title": "Arbre de compétences",
+    "backToDashboard": "← Tableau de bord",
+    "learningPath": "Votre parcours d'apprentissage",
+    "description": "Complétez des compétences pour en débloquer de nouvelles. Cliquez sur toute compétence disponible pour commencer.",
+    "modulesCompleted": "{completed}/{total} modules complétés",
+    "requires": "Nécessite : {prerequisites}"
+  },
+  "skillDetail": {
+    "backToSkills": "← Compétences",
+    "modules": "Modules",
+    "askCoach": "💬 Demander à votre coach IA",
+    "noModules": "Aucun module trouvé.",
+    "module": "Module {order}",
+    "completed": "Complété",
+    "marking": "Marquage...",
+    "markComplete": "Marquer comme terminé et continuer →",
+    "completeSkill": "Terminer la compétence ✓",
+    "nextModule": "Module suivant →",
+    "backToSkillsList": "Retour aux compétences →"
+  },
+  "auth": {
+    "signIn": {
+      "title": "Se connecter",
+      "subtitle": "Accédez à votre parcours d'apprentissage et à votre coach IA",
+      "continueWithGoogle": "Continuer avec Google",
+      "orContinueWithEmail": "Ou continuer avec l'e-mail",
+      "emailPlaceholder": "votre@email.com",
+      "sendMagicLink": "Envoyer le lien magique",
+      "sendingLink": "Envoi du lien...",
+      "checkEmail": "Vérifiez votre e-mail",
+      "emailSentPrefix": "Nous avons envoyé un lien de connexion à",
+      "emailSentSuffix": ". Cliquez sur le lien pour continuer."
+    },
+    "verifyRequest": {
+      "title": "Vérifiez votre e-mail",
+      "description": "Un lien de connexion a été envoyé à votre adresse e-mail. Cliquez sur le lien pour continuer."
+    }
+  },
+  "language": {
+    "label": "Langue",
+    "en": "Anglais",
+    "fr": "Français",
+    "es": "Espagnol"
+  }
+}

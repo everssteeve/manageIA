@@ -3,6 +3,8 @@
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import type { Locale } from "@/lib/i18n";
 
 interface Message {
   role: "user" | "assistant";
@@ -10,16 +12,30 @@ interface Message {
   streaming?: boolean;
 }
 
-export default function CoachPage() {
+interface CoachDict {
+  title: string;
+  newConversation: string;
+  initialMessage: string;
+  placeholder: string;
+  send: string;
+  limit: string;
+  newSessionMessage: string;
+  error: string;
+  backToDashboard: string;
+}
+
+interface Props {
+  lang: Locale;
+  dict: CoachDict;
+  initialSessionId?: string;
+}
+
+export function CoachClient({ lang, dict, initialSessionId }: Props) {
   const [messages, setMessages] = useState<Message[]>([
-    {
-      role: "assistant",
-      content:
-        "Hi! I'm your AI coach. I'm here to help you navigate your team's transition to AI-augmented work.\n\nWhat's on your mind? You can share a specific challenge you're facing, ask about a skill you're learning, or just start a conversation about your situation.",
-    },
+    { role: "assistant", content: dict.initialMessage },
   ]);
   const [input, setInput] = useState("");
-  const [sessionId, setSessionId] = useState<string | null>(null);
+  const [sessionId, setSessionId] = useState<string | null>(initialSessionId ?? null);
   const [loading, setLoading] = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -36,7 +52,10 @@ export default function CoachPage() {
     setLoading(true);
 
     setMessages((prev) => [...prev, { role: "user", content: message }]);
-    setMessages((prev) => [...prev, { role: "assistant", content: "", streaming: true }]);
+    setMessages((prev) => [
+      ...prev,
+      { role: "assistant", content: "", streaming: true },
+    ]);
 
     try {
       const response = await fetch("/api/coach", {
@@ -49,7 +68,10 @@ export default function CoachPage() {
         const error = await response.json();
         setMessages((prev) => [
           ...prev.slice(0, -1),
-          { role: "assistant", content: error.error || "Something went wrong. Please try again." },
+          {
+            role: "assistant",
+            content: error.error || dict.error,
+          },
         ]);
         return;
       }
@@ -90,7 +112,6 @@ export default function CoachPage() {
         }
       }
 
-      // Mark streaming done
       setMessages((prev) => {
         const last = prev[prev.length - 1];
         return [...prev.slice(0, -1), { ...last, streaming: false }];
@@ -111,28 +132,30 @@ export default function CoachPage() {
   const startNewSession = () => {
     setSessionId(null);
     setMessages([
-      {
-        role: "assistant",
-        content:
-          "Starting a new conversation. What would you like to talk about?",
-      },
+      { role: "assistant", content: dict.newSessionMessage },
     ]);
   };
 
   return (
     <div className="flex flex-col h-screen bg-gray-50">
-      {/* Header */}
       <nav className="bg-white border-b px-6 py-4 flex items-center justify-between">
         <div className="flex items-center gap-4">
-          <Link href="/dashboard" className="text-sm text-gray-500 hover:text-gray-900">← Dashboard</Link>
-          <h1 className="font-semibold text-gray-900">AI Coach</h1>
+          <Link
+            href={`/${lang}/dashboard`}
+            className="text-sm text-gray-500 hover:text-gray-900"
+          >
+            {dict.backToDashboard}
+          </Link>
+          <h1 className="font-semibold text-gray-900">{dict.title}</h1>
         </div>
-        <Button variant="ghost" size="sm" onClick={startNewSession}>
-          New conversation
-        </Button>
+        <div className="flex items-center gap-3">
+          <Button variant="ghost" size="sm" onClick={startNewSession}>
+            {dict.newConversation}
+          </Button>
+          <LanguageSwitcher currentLang={lang} />
+        </div>
       </nav>
 
-      {/* Messages */}
       <div className="flex-1 overflow-y-auto px-4 py-6">
         <div className="max-w-2xl mx-auto space-y-6">
           {messages.map((msg, i) => (
@@ -158,7 +181,6 @@ export default function CoachPage() {
         </div>
       </div>
 
-      {/* Input */}
       <div className="bg-white border-t px-4 py-4">
         <div className="max-w-2xl mx-auto flex items-end gap-3">
           <textarea
@@ -166,7 +188,7 @@ export default function CoachPage() {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
-            placeholder="Ask your coach anything... (Enter to send, Shift+Enter for new line)"
+            placeholder={dict.placeholder}
             rows={2}
             className="flex-1 resize-none rounded-xl border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           />
@@ -178,13 +200,11 @@ export default function CoachPage() {
             {loading ? (
               <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
             ) : (
-              "Send"
+              dict.send
             )}
           </Button>
         </div>
-        <p className="text-xs text-gray-400 text-center mt-2">
-          Limited to 20 messages per day. Responses may take a moment.
-        </p>
+        <p className="text-xs text-gray-400 text-center mt-2">{dict.limit}</p>
       </div>
     </div>
   );

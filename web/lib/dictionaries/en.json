@@ -1,0 +1,142 @@
+{
+  "home": {
+    "title": "Manager AI Coach",
+    "subtitle": "A structured learning path and AI coaching system to help you navigate your team's transition to AI-augmented work.",
+    "learningPath": {
+      "title": "Learning Path",
+      "description": "Structured micro-skills for the AI transition, unlocked as you progress."
+    },
+    "aiCoach": {
+      "title": "AI Coach",
+      "description": "Context-aware coaching conversations tailored to your situation."
+    },
+    "progressTracking": {
+      "title": "Progress Tracking",
+      "description": "See your growth across skills and get recommended next steps."
+    },
+    "getStarted": "Get Started",
+    "dashboard": "Dashboard →"
+  },
+  "nav": {
+    "appName": "Manager AI Coach",
+    "skills": "Skills",
+    "aiCoach": "AI Coach"
+  },
+  "dashboard": {
+    "welcomeBack": "Welcome back",
+    "subtitle": "Continue your AI transition journey.",
+    "overallProgress": "Overall Progress",
+    "skillsCompleted": "Skills Completed",
+    "inProgress": "In Progress",
+    "recommendedNext": "Recommended Next",
+    "allSkills": "All Skills",
+    "viewSkillTree": "View skill tree →",
+    "modules": "{completed}/{total} modules",
+    "completeFirst": "Complete {prerequisites} first",
+    "recentCoaching": "Recent Coaching",
+    "openCoach": "Open coach →",
+    "coachingSession": "Coaching session"
+  },
+  "status": {
+    "done": "Done",
+    "inProgress": "In Progress",
+    "available": "Available",
+    "locked": "Locked",
+    "completed": "Completed",
+    "continue": "Continue",
+    "start": "Start"
+  },
+  "coach": {
+    "title": "AI Coach",
+    "newConversation": "New conversation",
+    "initialMessage": "Hi! I'm your AI coach. I'm here to help you navigate your team's transition to AI-augmented work.\n\nWhat's on your mind? You can share a specific challenge you're facing, ask about a skill you're learning, or just start a conversation about your situation.",
+    "placeholder": "Ask your coach anything... (Enter to send, Shift+Enter for new line)",
+    "send": "Send",
+    "limit": "Limited to 20 messages per day. Responses may take a moment.",
+    "newSessionMessage": "Starting a new conversation. What would you like to talk about?",
+    "error": "Something went wrong. Please try again.",
+    "backToDashboard": "← Dashboard"
+  },
+  "onboarding": {
+    "stepOf": "Step {step} of 3",
+    "step1": {
+      "title": "What's your role?",
+      "description": "This helps us tailor the learning path to your situation.",
+      "roles": {
+        "teamLead": { "label": "Team Lead", "description": "Leading a small team (2–8 people)" },
+        "middleManager": { "label": "Middle Manager", "description": "Managing team leads or multiple teams" },
+        "seniorManager": { "label": "Senior Manager / Director", "description": "Leading an org of managers" },
+        "individualContributor": { "label": "Individual Contributor", "description": "No direct reports, but curious about AI leadership" }
+      }
+    },
+    "step2": {
+      "title": "How big is your team?",
+      "description": "Including direct and indirect reports.",
+      "sizes": {
+        "s1to5": "1–5 people",
+        "s6to20": "6–20 people",
+        "s21to100": "21–100 people",
+        "s100plus": "100+ people"
+      }
+    },
+    "step3": {
+      "title": "How familiar are you with AI tools?",
+      "description": "Be honest — we'll calibrate the content accordingly.",
+      "levels": {
+        "none": { "label": "None", "description": "I haven't used AI tools in my work yet" },
+        "basic": { "label": "Basic", "description": "I've tried a few things but don't use it regularly" },
+        "intermediate": { "label": "Intermediate", "description": "I use AI tools regularly in my own work" },
+        "advanced": { "label": "Advanced", "description": "I actively guide my team's AI adoption" }
+      }
+    },
+    "back": "Back",
+    "continue": "Continue",
+    "startLearning": "Start Learning",
+    "settingUp": "Setting up..."
+  },
+  "skills": {
+    "title": "Skill Tree",
+    "backToDashboard": "← Dashboard",
+    "learningPath": "Your Learning Path",
+    "description": "Complete skills to unlock new ones. Click any available skill to begin.",
+    "modulesCompleted": "{completed}/{total} modules completed",
+    "requires": "Requires: {prerequisites}"
+  },
+  "skillDetail": {
+    "backToSkills": "← Skills",
+    "modules": "Modules",
+    "askCoach": "💬 Ask your AI coach",
+    "noModules": "No modules found.",
+    "module": "Module {order}",
+    "completed": "Completed",
+    "marking": "Marking...",
+    "markComplete": "Mark Complete & Continue →",
+    "completeSkill": "Complete Skill ✓",
+    "nextModule": "Next Module →",
+    "backToSkillsList": "Back to Skills →"
+  },
+  "auth": {
+    "signIn": {
+      "title": "Sign in",
+      "subtitle": "Access your learning path and AI coach",
+      "continueWithGoogle": "Continue with Google",
+      "orContinueWithEmail": "Or continue with email",
+      "emailPlaceholder": "your@email.com",
+      "sendMagicLink": "Send magic link",
+      "sendingLink": "Sending link...",
+      "checkEmail": "Check your email",
+      "emailSentPrefix": "We've sent a sign-in link to",
+      "emailSentSuffix": ". Click the link to continue."
+    },
+    "verifyRequest": {
+      "title": "Check your email",
+      "description": "A sign-in link has been sent to your email address. Click the link to continue."
+    }
+  },
+  "language": {
+    "label": "Language",
+    "en": "English",
+    "fr": "French",
+    "es": "Spanish"
+  }
+}

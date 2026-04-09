@@ -3,13 +3,41 @@
 import { signIn, getProviders } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import type { Locale } from "@/lib/i18n";
 
-export default function SignInPage() {
+interface SignInDict {
+  title: string;
+  subtitle: string;
+  continueWithGoogle: string;
+  orContinueWithEmail: string;
+  emailPlaceholder: string;
+  sendMagicLink: string;
+  sendingLink: string;
+  checkEmail: string;
+  emailSentPrefix: string;
+  emailSentSuffix: string;
+}
+
+interface Props {
+  lang: Locale;
+  dict: SignInDict;
+}
+
+export function SignInClient({ lang, dict }: Props) {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [emailSent, setEmailSent] = useState(false);
-  const [providers, setProviders] = useState<Record<string, { id: string; name: string }> | null>(null);
+  const [providers, setProviders] = useState<Record<
+    string,
+    { id: string; name: string }
+  > | null>(null);
 
   useEffect(() => {
     getProviders().then(setProviders);
@@ -19,7 +47,11 @@ export default function SignInPage() {
     e.preventDefault();
     setLoading(true);
     try {
-      await signIn("email", { email, callbackUrl: "/dashboard", redirect: false });
+      await signIn("email", {
+        email,
+        callbackUrl: `/${lang}/dashboard`,
+        redirect: false,
+      });
       setEmailSent(true);
     } finally {
       setLoading(false);
@@ -31,9 +63,10 @@ export default function SignInPage() {
       <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
         <Card className="w-full max-w-md text-center">
           <CardHeader>
-            <CardTitle>Check your email</CardTitle>
+            <CardTitle>{dict.checkEmail}</CardTitle>
             <CardDescription>
-              We&apos;ve sent a sign-in link to <strong>{email}</strong>. Click the link to continue.
+              {dict.emailSentPrefix} <strong>{email}</strong>
+              {dict.emailSentSuffix}
             </CardDescription>
           </CardHeader>
         </Card>
@@ -45,17 +78,17 @@ export default function SignInPage() {
     <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
-          <CardTitle className="text-2xl">Sign in</CardTitle>
-          <CardDescription>
-            Access your learning path and AI coach
-          </CardDescription>
+          <CardTitle className="text-2xl">{dict.title}</CardTitle>
+          <CardDescription>{dict.subtitle}</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
           {providers?.google && (
             <Button
               variant="outline"
               className="w-full"
-              onClick={() => signIn("google", { callbackUrl: "/dashboard" })}
+              onClick={() =>
+                signIn("google", { callbackUrl: `/${lang}/dashboard` })
+              }
             >
               <svg className="w-4 h-4 mr-2" viewBox="0 0 24 24">
                 <path
@@ -75,7 +108,7 @@ export default function SignInPage() {
                   d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
                 />
               </svg>
-              Continue with Google
+              {dict.continueWithGoogle}
             </Button>
           )}
 
@@ -84,21 +117,23 @@ export default function SignInPage() {
               <span className="w-full border-t" />
             </div>
             <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-white px-2 text-gray-500">Or continue with email</span>
+              <span className="bg-white px-2 text-gray-500">
+                {dict.orContinueWithEmail}
+              </span>
             </div>
           </div>
 
           <form onSubmit={handleEmailSignIn} className="space-y-3">
             <input
               type="email"
-              placeholder="your@email.com"
+              placeholder={dict.emailPlaceholder}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
               className="w-full h-9 px-3 rounded-md border border-input bg-transparent text-sm shadow-sm placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring"
             />
             <Button type="submit" className="w-full" disabled={loading}>
-              {loading ? "Sending link..." : "Send magic link"}
+              {loading ? dict.sendingLink : dict.sendMagicLink}
             </Button>
           </form>
         </CardContent>

@@ -24,8 +24,8 @@ export const authOptions: NextAuthOptions = {
     }),
   ],
   pages: {
-    signIn: "/auth/signin",
-    verifyRequest: "/auth/verify-request",
+    signIn: "/en/auth/signin",
+    verifyRequest: "/en/auth/verify-request",
   },
   callbacks: {
     session({ session, user }) {

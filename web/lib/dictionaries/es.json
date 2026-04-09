@@ -1,0 +1,142 @@
+{
+  "home": {
+    "title": "Coach de IA para Managers",
+    "subtitle": "Un camino de aprendizaje estructurado y un sistema de coaching con IA para ayudarle a navegar la transición de su equipo hacia el trabajo aumentado por IA.",
+    "learningPath": {
+      "title": "Camino de aprendizaje",
+      "description": "Micro-habilidades estructuradas para la transición a la IA, desbloqueadas a medida que progresa."
+    },
+    "aiCoach": {
+      "title": "Coach de IA",
+      "description": "Conversaciones de coaching contextuales adaptadas a su situación."
+    },
+    "progressTracking": {
+      "title": "Seguimiento de progreso",
+      "description": "Vea su crecimiento en habilidades y obtenga los próximos pasos recomendados."
+    },
+    "getStarted": "Comenzar",
+    "dashboard": "Panel de control →"
+  },
+  "nav": {
+    "appName": "Coach de IA para Managers",
+    "skills": "Habilidades",
+    "aiCoach": "Coach de IA"
+  },
+  "dashboard": {
+    "welcomeBack": "Bienvenido de nuevo",
+    "subtitle": "Continúe su viaje de transición a la IA.",
+    "overallProgress": "Progreso general",
+    "skillsCompleted": "Habilidades completadas",
+    "inProgress": "En progreso",
+    "recommendedNext": "Siguiente recomendado",
+    "allSkills": "Todas las habilidades",
+    "viewSkillTree": "Ver árbol de habilidades →",
+    "modules": "{completed}/{total} módulos",
+    "completeFirst": "Complete {prerequisites} primero",
+    "recentCoaching": "Coaching reciente",
+    "openCoach": "Abrir coach →",
+    "coachingSession": "Sesión de coaching"
+  },
+  "status": {
+    "done": "Hecho",
+    "inProgress": "En progreso",
+    "available": "Disponible",
+    "locked": "Bloqueado",
+    "completed": "Completado",
+    "continue": "Continuar",
+    "start": "Comenzar"
+  },
+  "coach": {
+    "title": "Coach de IA",
+    "newConversation": "Nueva conversación",
+    "initialMessage": "¡Hola! Soy su coach de IA. Estoy aquí para ayudarle a navegar la transición de su equipo hacia el trabajo aumentado por IA.\n\n¿Qué tiene en mente? Puede compartir un desafío específico que enfrenta, preguntar sobre una habilidad que está aprendiendo, o simplemente comenzar una conversación sobre su situación.",
+    "placeholder": "Pregúntele cualquier cosa a su coach... (Enter para enviar, Shift+Enter para nueva línea)",
+    "send": "Enviar",
+    "limit": "Limitado a 20 mensajes por día. Las respuestas pueden tardar un momento.",
+    "newSessionMessage": "Iniciando una nueva conversación. ¿De qué le gustaría hablar?",
+    "error": "Algo salió mal. Por favor, inténtelo de nuevo.",
+    "backToDashboard": "← Panel de control"
+  },
+  "onboarding": {
+    "stepOf": "Paso {step} de 3",
+    "step1": {
+      "title": "¿Cuál es su rol?",
+      "description": "Esto nos ayuda a adaptar el camino de aprendizaje a su situación.",
+      "roles": {
+        "teamLead": { "label": "Líder de equipo", "description": "Liderando un equipo pequeño (2–8 personas)" },
+        "middleManager": { "label": "Manager intermedio", "description": "Gestionando líderes de equipo o múltiples equipos" },
+        "seniorManager": { "label": "Manager senior / Director", "description": "Liderando una organización de managers" },
+        "individualContributor": { "label": "Colaborador individual", "description": "Sin subordinados directos, pero curioso sobre el liderazgo en IA" }
+      }
+    },
+    "step2": {
+      "title": "¿Qué tan grande es su equipo?",
+      "description": "Incluyendo subordinados directos e indirectos.",
+      "sizes": {
+        "s1to5": "1–5 personas",
+        "s6to20": "6–20 personas",
+        "s21to100": "21–100 personas",
+        "s100plus": "100+ personas"
+      }
+    },
+    "step3": {
+      "title": "¿Qué tan familiarizado está con las herramientas de IA?",
+      "description": "Sea honesto — calibraremos el contenido en consecuencia.",
+      "levels": {
+        "none": { "label": "Ninguna", "description": "Aún no he usado herramientas de IA en mi trabajo" },
+        "basic": { "label": "Básico", "description": "He probado algunas cosas pero no las uso regularmente" },
+        "intermediate": { "label": "Intermedio", "description": "Uso herramientas de IA regularmente en mi propio trabajo" },
+        "advanced": { "label": "Avanzado", "description": "Guío activamente la adopción de IA de mi equipo" }
+      }
+    },
+    "back": "Volver",
+    "continue": "Continuar",
+    "startLearning": "Comenzar a aprender",
+    "settingUp": "Configurando..."
+  },
+  "skills": {
+    "title": "Árbol de habilidades",
+    "backToDashboard": "← Panel de control",
+    "learningPath": "Su camino de aprendizaje",
+    "description": "Complete habilidades para desbloquear nuevas. Haga clic en cualquier habilidad disponible para comenzar.",
+    "modulesCompleted": "{completed}/{total} módulos completados",
+    "requires": "Requiere: {prerequisites}"
+  },
+  "skillDetail": {
+    "backToSkills": "← Habilidades",
+    "modules": "Módulos",
+    "askCoach": "💬 Pregúntele a su coach de IA",
+    "noModules": "No se encontraron módulos.",
+    "module": "Módulo {order}",
+    "completed": "Completado",
+    "marking": "Marcando...",
+    "markComplete": "Marcar como completado y continuar →",
+    "completeSkill": "Completar habilidad ✓",
+    "nextModule": "Siguiente módulo →",
+    "backToSkillsList": "Volver a habilidades →"
+  },
+  "auth": {
+    "signIn": {
+      "title": "Iniciar sesión",
+      "subtitle": "Acceda a su camino de aprendizaje y coach de IA",
+      "continueWithGoogle": "Continuar con Google",
+      "orContinueWithEmail": "O continuar con email",
+      "emailPlaceholder": "su@email.com",
+      "sendMagicLink": "Enviar enlace mágico",
+      "sendingLink": "Enviando enlace...",
+      "checkEmail": "Revise su correo",
+      "emailSentPrefix": "Hemos enviado un enlace de inicio de sesión a",
+      "emailSentSuffix": ". Haga clic en el enlace para continuar."
+    },
+    "verifyRequest": {
+      "title": "Revise su correo",
+      "description": "Se ha enviado un enlace de inicio de sesión a su dirección de correo electrónico. Haga clic en el enlace para continuar."
+    }
+  },
+  "language": {
+    "label": "Idioma",
+    "en": "Inglés",
+    "fr": "Francés",
+    "es": "Español"
+  }
+}
