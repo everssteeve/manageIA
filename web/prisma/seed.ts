@@ -12,7 +12,7 @@ async function main() {
 
   // First pass: create all skills without prerequisites
   for (const skillData of SKILLS_SEED) {
-    const { modules, prerequisites, ...skill } = skillData;
+    const { modules, prerequisites: _prerequisites, ...skill } = skillData;
 
     await prisma.skill.upsert({
       where: { slug: skill.slug },
@@ -21,14 +21,14 @@ async function main() {
     });
 
     for (const moduleData of modules) {
-      const module = await prisma.module.findFirst({
-        where: { skillId: (await prisma.skill.findUnique({ where: { slug: skill.slug } }))!.id, order: moduleData.order },
-      });
-
       const skillRecord = await prisma.skill.findUnique({ where: { slug: skill.slug } });
       if (!skillRecord) continue;
 
-      if (!module) {
+      const existingModule = await prisma.module.findFirst({
+        where: { skillId: skillRecord.id, order: moduleData.order },
+      });
+
+      if (!existingModule) {
         await prisma.module.create({
           data: {
             ...moduleData,
@@ -37,7 +37,7 @@ async function main() {
         });
       } else {
         await prisma.module.update({
-          where: { id: module.id },
+          where: { id: existingModule.id },
           data: { title: moduleData.title, body: moduleData.body },
         });
       }

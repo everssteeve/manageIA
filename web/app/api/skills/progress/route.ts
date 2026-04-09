@@ -13,7 +13,7 @@ export async function POST(req: NextRequest) {
   const { moduleId } = await req.json();
   const userId = session.user.id;
 
-  const module = await prisma.module.findUnique({
+  const learningModule = await prisma.module.findUnique({
     where: { id: moduleId },
     include: {
       skill: {
@@ -25,7 +25,7 @@ export async function POST(req: NextRequest) {
     },
   });
 
-  if (!module) {
+  if (!learningModule) {
     return NextResponse.json({ error: "Module not found" }, { status: 404 });
   }
 
@@ -37,7 +37,7 @@ export async function POST(req: NextRequest) {
   });
 
   // Check if all modules in the skill are complete
-  const skill = module.skill;
+  const skill = learningModule.skill;
   const completedModules = await prisma.userModuleProgress.count({
     where: {
       userId,
