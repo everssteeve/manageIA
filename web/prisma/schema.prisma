@@ -7,10 +7,9 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
 }
 
-// ─── NextAuth models ─────────────────────────────────────────────────────────
+// ─── NextAuth models ──────────────────────────────────────────────────────────
 
 model Account {
   id                String  @id @default(cuid())
@@ -47,7 +46,7 @@ model VerificationToken {
   @@unique([identifier, token])
 }
 
-// ─── App models ──────────────────────────────────────────────────────────────
+// ─── App models ───────────────────────────────────────────────────────────────
 
 model User {
   id            String    @id @default(cuid())
@@ -59,33 +58,32 @@ model User {
   updatedAt     DateTime  @updatedAt
 
   // Onboarding fields
-  onboardedAt   DateTime?
-  role          String?       // e.g. "team lead", "middle manager", "senior manager"
-  teamSize      String?       // e.g. "1-5", "6-20", "21-100", "100+"
-  aiFamiliarity String?       // "none", "basic", "intermediate", "advanced"
+  onboardedAt    DateTime?
+  role           String?   // e.g. "team lead", "middle manager", "senior manager"
+  teamSize       String?   // e.g. "1-5", "6-20", "21-100", "100+"
+  aiFamiliarity  String?   // "none", "basic", "intermediate", "advanced"
 
-  accounts      Account[]
-  sessions      Session[]
-  skillProgress UserSkillProgress[]
-  moduleProgress UserModuleProgress[]
+  accounts        Account[]
+  sessions        Session[]
+  skillProgress   UserSkillProgress[]
+  moduleProgress  UserModuleProgress[]
   coachingSessions CoachingSession[]
 }
 
 model Skill {
-  id           String   @id @default(cuid())
-  slug         String   @unique
-  title        String
-  description  String   @db.Text
-  category     String
-  order        Int      @default(0)
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  title       String
+  description String   @db.Text
+  category    String
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 
-  prerequisites   Skill[] @relation("SkillPrerequisites")
-  dependents      Skill[] @relation("SkillPrerequisites")
-
-  modules         Module[]
-  userProgress    UserSkillProgress[]
+  prerequisites Skill[] @relation("SkillPrerequisites")
+  dependents    Skill[] @relation("SkillPrerequisites")
+  modules       Module[]
+  userProgress  UserSkillProgress[]
 }
 
 enum SkillStatus {
@@ -145,7 +143,7 @@ model CoachingSession {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  user     User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user     User               @relation(fields: [userId], references: [id], onDelete: Cascade)
   messages CoachingMessage[]
 }
 
