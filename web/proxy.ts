@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { LOCALES, DEFAULT_LOCALE, hasLocale } from "./lib/i18n";
+import { DEFAULT_LOCALE, hasLocale } from "./lib/i18n";
 
 function getPreferredLocale(request: NextRequest): string {
   const acceptLanguage = request.headers.get("accept-language") ?? "";
@@ -8,7 +8,7 @@ function getPreferredLocale(request: NextRequest): string {
     const lang = part.trim().split(";")[0].trim().toLowerCase();
     const short = lang.split("-")[0];
     if (hasLocale(short)) return short;
-    if (hasLocale(lang as any)) return lang;
+    if (hasLocale(lang)) return lang;
   }
   return DEFAULT_LOCALE;
 }
