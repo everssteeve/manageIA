@@ -137,16 +137,16 @@ export function CoachClient({ lang, dict, initialSessionId }: Props) {
   };
 
   return (
-    <div className="flex flex-col h-screen bg-gray-50">
-      <nav className="bg-white border-b px-6 py-4 flex items-center justify-between">
+    <div className="flex flex-col h-screen bg-gray-50 dark:bg-gray-900">
+      <nav className="bg-white dark:bg-gray-800 border-b dark:border-gray-700 px-6 py-4 flex items-center justify-between">
         <div className="flex items-center gap-4">
           <Link
             href={`/${lang}/dashboard`}
-            className="text-sm text-gray-500 hover:text-gray-900"
+            className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100"
           >
             {dict.backToDashboard}
           </Link>
-          <h1 className="font-semibold text-gray-900">{dict.title}</h1>
+          <h1 className="font-semibold text-gray-900 dark:text-gray-100">{dict.title}</h1>
         </div>
         <div className="flex items-center gap-3">
           <Button variant="ghost" size="sm" onClick={startNewSession}>
@@ -167,12 +167,12 @@ export function CoachClient({ lang, dict, initialSessionId }: Props) {
                 className={`max-w-[85%] px-4 py-3 rounded-2xl text-sm leading-relaxed whitespace-pre-wrap ${
                   msg.role === "user"
                     ? "bg-blue-600 text-white rounded-br-sm"
-                    : "bg-white border text-gray-800 rounded-bl-sm shadow-sm"
+                    : "bg-white dark:bg-gray-700 border dark:border-gray-600 text-gray-800 dark:text-gray-100 rounded-bl-sm shadow-sm"
                 }`}
               >
                 {msg.content}
                 {msg.streaming && (
-                  <span className="inline-block w-1.5 h-4 bg-gray-400 ml-1 animate-pulse rounded-sm align-middle" />
+                  <span className="inline-block w-1.5 h-4 bg-gray-400 dark:bg-gray-500 ml-1 animate-pulse rounded-sm align-middle" />
                 )}
               </div>
             </div>
@@ -181,7 +181,7 @@ export function CoachClient({ lang, dict, initialSessionId }: Props) {
         </div>
       </div>
 
-      <div className="bg-white border-t px-4 py-4">
+      <div className="bg-white dark:bg-gray-800 border-t dark:border-gray-700 px-4 py-4">
         <div className="max-w-2xl mx-auto flex items-end gap-3">
           <textarea
             ref={textareaRef}
@@ -190,7 +190,7 @@ export function CoachClient({ lang, dict, initialSessionId }: Props) {
             onKeyDown={handleKeyDown}
             placeholder={dict.placeholder}
             rows={2}
-            className="flex-1 resize-none rounded-xl border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="flex-1 resize-none rounded-xl border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           />
           <Button
             onClick={sendMessage}
@@ -204,7 +204,7 @@ export function CoachClient({ lang, dict, initialSessionId }: Props) {
             )}
           </Button>
         </div>
-        <p className="text-xs text-gray-400 text-center mt-2">{dict.limit}</p>
+        <p className="text-xs text-gray-400 dark:text-gray-500 text-center mt-2">{dict.limit}</p>
       </div>
     </div>
   );

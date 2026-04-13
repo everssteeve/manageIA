@@ -70,17 +70,17 @@ export default async function DashboardPage({ params }: Props) {
   const s = dict.status;
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <nav className="bg-white border-b px-6 py-4 flex items-center justify-between">
-        <h1 className="font-semibold text-gray-900">{dict.nav.appName}</h1>
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+      <nav className="bg-white dark:bg-gray-800 border-b dark:border-gray-700 px-6 py-4 flex items-center justify-between">
+        <h1 className="font-semibold text-gray-900 dark:text-gray-100">{dict.nav.appName}</h1>
         <div className="flex items-center gap-4">
-          <Link href={`/${lang}/skills`} className="text-sm text-gray-600 hover:text-gray-900">
+          <Link href={`/${lang}/skills`} className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100">
             {dict.nav.skills}
           </Link>
-          <Link href={`/${lang}/coach`} className="text-sm text-gray-600 hover:text-gray-900">
+          <Link href={`/${lang}/coach`} className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100">
             {dict.nav.aiCoach}
           </Link>
-          <span className="text-sm text-gray-500">
+          <span className="text-sm text-gray-500 dark:text-gray-400">
             {session.user.name || session.user.email}
           </span>
           <LanguageSwitcher currentLang={lang as Locale} />
@@ -89,55 +89,55 @@ export default async function DashboardPage({ params }: Props) {
 
       <main className="max-w-4xl mx-auto px-6 py-8 space-y-8">
         <div>
-          <h2 className="text-2xl font-bold text-gray-900">
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
             {d.welcomeBack}
             {session.user.name ? `, ${session.user.name.split(" ")[0]}` : ""}
           </h2>
-          <p className="text-gray-600 mt-1">{d.subtitle}</p>
+          <p className="text-gray-600 dark:text-gray-400 mt-1">{d.subtitle}</p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <Card>
             <CardHeader className="pb-2">
-              <CardTitle className="text-sm font-medium text-gray-500">
+              <CardTitle className="text-sm font-medium text-gray-500 dark:text-gray-400">
                 {d.overallProgress}
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-3xl font-bold text-gray-900">{overallProgress}%</div>
+              <div className="text-3xl font-bold text-gray-900 dark:text-gray-100">{overallProgress}%</div>
               <Progress value={overallProgress} className="mt-2" />
             </CardContent>
           </Card>
           <Card>
             <CardHeader className="pb-2">
-              <CardTitle className="text-sm font-medium text-gray-500">
+              <CardTitle className="text-sm font-medium text-gray-500 dark:text-gray-400">
                 {d.skillsCompleted}
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-3xl font-bold text-gray-900">
+              <div className="text-3xl font-bold text-gray-900 dark:text-gray-100">
                 {completedSkills}
-                <span className="text-lg text-gray-400">/{totalSkills}</span>
+                <span className="text-lg text-gray-400 dark:text-gray-500">/{totalSkills}</span>
               </div>
             </CardContent>
           </Card>
           <Card>
             <CardHeader className="pb-2">
-              <CardTitle className="text-sm font-medium text-gray-500">
+              <CardTitle className="text-sm font-medium text-gray-500 dark:text-gray-400">
                 {d.inProgress}
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-3xl font-bold text-gray-900">{inProgressSkills}</div>
+              <div className="text-3xl font-bold text-gray-900 dark:text-gray-100">{inProgressSkills}</div>
             </CardContent>
           </Card>
         </div>
 
         {nextSkill && (
           <div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-3">{d.recommendedNext}</h3>
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-3">{d.recommendedNext}</h3>
             <Link href={`/${lang}/skills/${nextSkill.slug}`}>
-              <Card className="hover:shadow-md transition-shadow cursor-pointer border-blue-200 bg-blue-50">
+              <Card className="hover:shadow-md transition-shadow cursor-pointer border-blue-200 dark:border-blue-800 bg-blue-50 dark:bg-blue-900/30">
                 <CardContent className="py-5 flex items-center justify-between">
                   <div>
                     <Badge variant="default" className="mb-2">
@@ -145,10 +145,10 @@ export default async function DashboardPage({ params }: Props) {
                         ? s.continue
                         : s.start}
                     </Badge>
-                    <h4 className="font-semibold text-gray-900">{nextSkill.title}</h4>
-                    <p className="text-sm text-gray-600 mt-1">{nextSkill.description}</p>
+                    <h4 className="font-semibold text-gray-900 dark:text-gray-100">{nextSkill.title}</h4>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">{nextSkill.description}</p>
                   </div>
-                  <span className="text-2xl ml-4">→</span>
+                  <span className="text-2xl ml-4 dark:text-gray-300">→</span>
                 </CardContent>
               </Card>
             </Link>
@@ -157,8 +157,8 @@ export default async function DashboardPage({ params }: Props) {
 
         <div>
           <div className="flex items-center justify-between mb-3">
-            <h3 className="text-lg font-semibold text-gray-900">{d.allSkills}</h3>
-            <Link href={`/${lang}/skills`} className="text-sm text-blue-600 hover:underline">
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">{d.allSkills}</h3>
+            <Link href={`/${lang}/skills`} className="text-sm text-blue-600 dark:text-blue-400 hover:underline">
               {d.viewSkillTree}
             </Link>
           </div>
@@ -187,10 +187,10 @@ export default async function DashboardPage({ params }: Props) {
                     <CardContent className="py-4">
                       <div className="flex items-start justify-between mb-2">
                         <div>
-                          <span className="text-xs text-gray-500 uppercase tracking-wide">
+                          <span className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide">
                             {skill.category}
                           </span>
-                          <h4 className="font-medium text-gray-900 text-sm mt-0.5">
+                          <h4 className="font-medium text-gray-900 dark:text-gray-100 text-sm mt-0.5">
                             {skill.title}
                           </h4>
                         </div>
@@ -199,7 +199,7 @@ export default async function DashboardPage({ params }: Props) {
                       {status !== "locked" && (
                         <div>
                           <Progress value={moduleProgress} className="h-1.5 mt-2" />
-                          <p className="text-xs text-gray-500 mt-1">
+                          <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
                             {d.modules
                               .replace("{completed}", String(completedModules))
                               .replace("{total}", String(totalModules))}
@@ -207,7 +207,7 @@ export default async function DashboardPage({ params }: Props) {
                         </div>
                       )}
                       {status === "locked" && (
-                        <p className="text-xs text-gray-400 mt-1">
+                        <p className="text-xs text-gray-400 dark:text-gray-500 mt-1">
                           {d.completeFirst.replace(
                             "{prerequisites}",
                             skill.prerequisites.map((p) => p.title).join(", ")
@@ -225,8 +225,8 @@ export default async function DashboardPage({ params }: Props) {
         {coachingSessions.length > 0 && (
           <div>
             <div className="flex items-center justify-between mb-3">
-              <h3 className="text-lg font-semibold text-gray-900">{d.recentCoaching}</h3>
-              <Link href={`/${lang}/coach`} className="text-sm text-blue-600 hover:underline">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">{d.recentCoaching}</h3>
+              <Link href={`/${lang}/coach`} className="text-sm text-blue-600 dark:text-blue-400 hover:underline">
                 {d.openCoach}
               </Link>
             </div>
@@ -235,12 +235,12 @@ export default async function DashboardPage({ params }: Props) {
                 <Link key={sess.id} href={`/${lang}/coach?session=${sess.id}`}>
                   <Card className="hover:shadow-sm transition-shadow cursor-pointer">
                     <CardContent className="py-3">
-                      <p className="text-sm font-medium text-gray-900 truncate">
+                      <p className="text-sm font-medium text-gray-900 dark:text-gray-100 truncate">
                         {sess.title ||
                           sess.messages[0]?.content.slice(0, 60) ||
                           d.coachingSession}
                       </p>
-                      <p className="text-xs text-gray-500 mt-0.5">
+                      <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
                         {new Date(sess.updatedAt).toLocaleDateString()}
                       </p>
                     </CardContent>

@@ -10,6 +10,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import type { Locale } from "@/lib/i18n";
 
 type Step = 1 | 2 | 3;
@@ -104,19 +105,20 @@ export function OnboardingClient({ lang, dict }: Props) {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 px-4 py-12">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 dark:bg-gray-900 px-4 py-12">
+      <div className="absolute top-4 right-4"><ThemeToggle /></div>
       <div className="w-full max-w-lg space-y-6">
         <div className="flex items-center gap-2">
           {[1, 2, 3].map((s) => (
             <div
               key={s}
               className={`flex-1 h-1.5 rounded-full transition-colors ${
-                s <= step ? "bg-blue-600" : "bg-gray-200"
+                s <= step ? "bg-blue-600" : "bg-gray-200 dark:bg-gray-700"
               }`}
             />
           ))}
         </div>
-        <p className="text-sm text-gray-500 text-center">
+        <p className="text-sm text-gray-500 dark:text-gray-400 text-center">
           {dict.stepOf.replace("{step}", String(step))}
         </p>
 
@@ -133,12 +135,12 @@ export function OnboardingClient({ lang, dict }: Props) {
                   onClick={() => setRole(opt.value)}
                   className={`w-full text-left p-4 rounded-lg border-2 transition-colors ${
                     role === opt.value
-                      ? "border-blue-600 bg-blue-50"
-                      : "border-gray-200 hover:border-gray-300"
+                      ? "border-blue-600 bg-blue-50 dark:bg-blue-900/30"
+                      : "border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600"
                   }`}
                 >
-                  <div className="font-medium text-gray-900">{opt.label}</div>
-                  <div className="text-sm text-gray-500">{opt.description}</div>
+                  <div className="font-medium text-gray-900 dark:text-gray-100">{opt.label}</div>
+                  <div className="text-sm text-gray-500 dark:text-gray-400">{opt.description}</div>
                 </button>
               ))}
               <Button
@@ -166,8 +168,8 @@ export function OnboardingClient({ lang, dict }: Props) {
                     onClick={() => setTeamSize(opt.value)}
                     className={`p-4 rounded-lg border-2 transition-colors font-medium ${
                       teamSize === opt.value
-                        ? "border-blue-600 bg-blue-50 text-blue-700"
-                        : "border-gray-200 hover:border-gray-300 text-gray-900"
+                        ? "border-blue-600 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300"
+                        : "border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 text-gray-900 dark:text-gray-100"
                     }`}
                   >
                     {opt.label}
@@ -207,12 +209,12 @@ export function OnboardingClient({ lang, dict }: Props) {
                   onClick={() => setAiFamiliarity(opt.value)}
                   className={`w-full text-left p-4 rounded-lg border-2 transition-colors ${
                     aiFamiliarity === opt.value
-                      ? "border-blue-600 bg-blue-50"
-                      : "border-gray-200 hover:border-gray-300"
+                      ? "border-blue-600 bg-blue-50 dark:bg-blue-900/30"
+                      : "border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600"
                   }`}
                 >
-                  <div className="font-medium text-gray-900">{opt.label}</div>
-                  <div className="text-sm text-gray-500">{opt.description}</div>
+                  <div className="font-medium text-gray-900 dark:text-gray-100">{opt.label}</div>
+                  <div className="text-sm text-gray-500 dark:text-gray-400">{opt.description}</div>
                 </button>
               ))}
               <div className="flex gap-2 mt-2">

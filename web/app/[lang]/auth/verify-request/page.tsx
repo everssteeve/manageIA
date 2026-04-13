@@ -13,7 +13,7 @@ export default async function VerifyRequestPage({ params }: Props) {
   const dict = await getDictionary(lang as Locale);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
+    <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900 px-4">
       <Card className="w-full max-w-md text-center">
         <CardHeader>
           <CardTitle>{dict.auth.verifyRequest.title}</CardTitle>

@@ -48,29 +48,29 @@ export default async function SkillsPage({ params }: Props) {
   const d = dict.skills;
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <nav className="bg-white border-b px-6 py-4 flex items-center justify-between">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+      <nav className="bg-white dark:bg-gray-800 border-b dark:border-gray-700 px-6 py-4 flex items-center justify-between">
         <div className="flex items-center gap-4">
           <Link
             href={`/${lang}/dashboard`}
-            className="text-sm text-gray-500 hover:text-gray-900"
+            className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100"
           >
             {d.backToDashboard}
           </Link>
-          <h1 className="font-semibold text-gray-900">{d.title}</h1>
+          <h1 className="font-semibold text-gray-900 dark:text-gray-100">{d.title}</h1>
         </div>
         <LanguageSwitcher currentLang={lang as Locale} />
       </nav>
 
       <main className="max-w-4xl mx-auto px-6 py-8 space-y-8">
         <div>
-          <h2 className="text-2xl font-bold text-gray-900">{d.learningPath}</h2>
-          <p className="text-gray-600 mt-1">{d.description}</p>
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">{d.learningPath}</h2>
+          <p className="text-gray-600 dark:text-gray-400 mt-1">{d.description}</p>
         </div>
 
         {Object.entries(byCategory).map(([category, categorySkills]) => (
           <section key={category}>
-            <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">
+            <h3 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-3">
               {category}
             </h3>
             <div className="space-y-3">
@@ -95,7 +95,7 @@ export default async function SkillsPage({ params }: Props) {
                     >
                       <CardContent className="py-5">
                         <div className="flex items-start gap-4">
-                          <div className="w-10 h-10 rounded-full flex items-center justify-center text-lg shrink-0 mt-0.5">
+                          <div className="w-10 h-10 rounded-full flex items-center justify-center text-lg shrink-0 mt-0.5 dark:text-gray-300">
                             {status === "completed"
                               ? "✓"
                               : status === "locked"
@@ -104,18 +104,18 @@ export default async function SkillsPage({ params }: Props) {
                           </div>
                           <div className="flex-1 min-w-0">
                             <div className="flex items-center gap-2 mb-1">
-                              <h4 className="font-semibold text-gray-900">
+                              <h4 className="font-semibold text-gray-900 dark:text-gray-100">
                                 {skill.title}
                               </h4>
                               <SkillStatusBadge status={status} dict={dict.status} />
                             </div>
-                            <p className="text-sm text-gray-600">
+                            <p className="text-sm text-gray-600 dark:text-gray-400">
                               {skill.description}
                             </p>
 
                             {status !== "locked" && (
                               <div className="mt-3">
-                                <div className="flex items-center justify-between text-xs text-gray-500 mb-1">
+                                <div className="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400 mb-1">
                                   <span>
                                     {d.modulesCompleted
                                       .replace(
@@ -146,7 +146,7 @@ export default async function SkillsPage({ params }: Props) {
 
                             {status === "locked" &&
                               skill.prerequisites.length > 0 && (
-                                <p className="text-xs text-gray-400 mt-2">
+                                <p className="text-xs text-gray-400 dark:text-gray-500 mt-2">
                                   {d.requires.replace(
                                     "{prerequisites}",
                                     skill.prerequisites

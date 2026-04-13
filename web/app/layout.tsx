@@ -21,7 +21,14 @@ export default async function RootLayout({
   const lang = headersList.get("x-locale") ?? DEFAULT_LOCALE;
 
   return (
-    <html lang={lang} className="h-full antialiased">
+    <html lang={lang} className="h-full antialiased" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{var t=localStorage.getItem('theme');if(t==='dark'||(t===null&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.classList.add('dark')}}catch(e){}`,
+          }}
+        />
+      </head>
       <body className={`${inter.className} min-h-full bg-background text-foreground`}>
         <Providers>{children}</Providers>
       </body>
